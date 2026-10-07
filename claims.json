@@ -13,7 +13,8 @@
     "proof": "There are 4 times choose(8,2) integer roots and 2^7 half-integer roots. Direct calculation gives squared length two. The finite root data can also be checked for reflection closure. Weyl complete reducibility gives the direct sum, and Schur lemma identifies each multiplicity with the dimension of its intertwiner space. The Weyl group order is the product of invariant degrees 2,8,12,14,18,20,24,30. A fixed Weyl group order is not a complexity lower bound as weights vary.",
     "limits": "Complete reducibility is an invoked general theorem, not a conclusion of a finite Python test. No universal exponential classical lower bound is established.",
     "checks": "Exact root counts, lengths, Gram matrix and all 57600 root reflections; integer Weyl order.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "F2",
@@ -29,7 +30,8 @@
     "proof": "An isometry is injective, so the target dimension must be at least d. Orthonormal basis encoding realizes this bound. A weight-w basis state is specified by choosing w excited positions. For a concrete leakage counterexample, states |247> and |251> have weight seven; swapping their adjacent differing bits is excitation conserving but takes a valid index into padding. Thus [U,N]=0 does not imply invariance of the physical projector.",
     "limits": "The 248-dimensional representation is adjoint. It is not the dimension of every fundamental E8 representation. A physical-subspace invariant ansatz must be independently established.",
     "checks": "Dimension arithmetic, every sector size and an explicit 247-to-251 excitation-conserving transition.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "F3",
@@ -46,7 +48,8 @@
     "proof": "Centrality and Schur lemma give a scalar on each irreducible copy, so each copy contributes its dimension to the projector trace. Division by the largest positive eigenvalue gives [0,1]; the zero operator is handled separately. Roots of squared length two give the root-metric adjoint value 60. Halving the invariant metric convention gives 30. If instead Tr(X_a X_b)=δ_ab in the adjoint matrix representation, taking the trace of the central sum of 248 squares gives C=I. These normalizations must not be mixed.",
     "limits": "The single-adjoint Casimir is scalar and has no nontrivial irrep decomposition to discover. Full decomposition requires more information than one Casimir spectrum; no polynomial-time VQE guarantee follows.",
     "checks": "Root-metric Casimir, scale arithmetic, projector trace counterexample and normalization examples.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "F4",
@@ -62,7 +65,8 @@
     "proof": "In the exact eigenbasis, deflation changes λ_j to λ_j+β_j>b and leaves at least one unpenalized eigenvalue at most b. For invariant physical/padding blocks, compare their two minimum eigenvalues after the shift. The value β_leak=5 is sufficient for zero padding when an accessible, unpenalized physical eigenvalue is at most one. Coupled blocks need not have exactly zero leakage at any finite penalty.",
     "limits": "These are global spectral statements, not VQE convergence guarantees. One vector does not exhaust a degenerate eigenspace. Approximate eigenvectors and restricted ansatz spaces need separate bounds.",
     "checks": "Exact vector deflation and both invariant-block and coupled-block leakage examples.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "F5",
@@ -79,7 +83,8 @@
     "proof": "The two central columns of G are orthonormal and have the same excitation number. Differentiating an expectation twice gives double commutators, bounded with ||[A,B]||≤2||A||||B||. Mixed derivatives are at most 4||H||||G_j||||G_k||; the induced Hessian norm is bounded by the displayed rank-one majorant. Four disjoint even pairs and three disjoint odd pairs per layer give the conditional gate count when each block has g gates and depth t. A trace derivative under U=exp(−iθK) is −i Tr([K,B]D), not Tr([K,B]D); any two-point shift rule needs additional spectral assumptions.",
     "limits": "The original two-CNOT synthesis is not used. The smoothness bound requires the specified parameterization, and does not prove global or exponential optimization convergence.",
     "checks": "Complex Givens unitarity and number commutation, generator-scaled Hessian examples, scheduling arithmetic and derivative factor.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "F6",
@@ -95,7 +100,8 @@
     "proof": "Every overlapping X/Z pair supplies one minus sign. The resource formulas then follow by counting. Ideal Z checks use a |0> target ancilla and data-controlled CNOTs; ideal X checks use a |+> control ancilla and X readout. A concrete nine-data-qubit CSS example is supplied in the scripts, with independent checks and exhaustively verified distance three.",
     "limits": "The budget does not establish routing, gate synthesis, distillation or circuit-level fault tolerance. Spatial separation, code distance and decoding-window length are distinct variables. A physical-qubit count alone supplies no noise threshold.",
     "checks": "CSS parity, check ranks, logical distance and resource counts; ideal syndrome parity extraction.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "F7",
@@ -111,7 +117,8 @@
     "proof": "Enumeration gives A_0=1, A_1=A_2=0 and B_3=35. The numerator starts as 35p³−420p⁴, whereas a(p)=1−15p+O(p²). Dividing yields the displayed series. A nonzero fixed point near 0.14 solves f(p)=p and is approximately 0.14148. The cubic truncation alone instead has fixed point 1/sqrt(35), approximately 0.16903. The positive p⁴ correction prevents treating 35p³ as a strict upper bound near zero.",
     "limits": "Perfect Clifford operations, independent twirled phase errors and postselection are assumptions. This model does not certify a physical distillation factory or arbitrary input noise.",
     "checks": "All 32768 input error patterns, exact series coefficients, rational probability evaluations and numerical fixed-point bracket.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "F8",
@@ -127,7 +134,8 @@
     "proof": "The root-coordinate Gram matrix is 60I. Scaling the entries yields the trace pairing. The tensor product projector formula follows from the one-qubit identities. The eight zero weights are repeated weights of the adjoint module, not eight distinct nonzero coordinates. Cartan matrices are linear combinations of Z strings, not generally single Pauli strings.",
     "limits": "A Cartan subalgebra is maximal toral within the Lie algebra, not the center of all represented matrices. The Lie-algebra center of simple E8 is zero.",
     "checks": "Exact coordinate Gram matrix, eightfold zero-weight multiplicity and rank of the Cartan diagonal space.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "T13",
@@ -146,7 +154,8 @@
     "references": [
       "R1",
       "R2"
-    ]
+    ],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "L6",
@@ -164,7 +173,8 @@
     "checks": "Adversarial syndrome histories saturating 64R, graph counts, exhaustive small matching oracle and optional NetworkX comparison.",
     "references": [
       "R3"
-    ]
+    ],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "T10",
@@ -179,7 +189,8 @@
     "proof": "On the annulus d(dφ)=0 locally and dφ∧dφ=0, so this connection is flat. Its matrices commute along the circular path, and the path-ordered exponential with the displayed positive-exponent convention reduces to exp(iZ·2π/8). Its two eigenvalues are unequal. This is a counterexample to the implication from flatness to scalar holonomy. General based-loop homotopy invariance follows from zero curvature; changing the base trivialization conjugates the holonomy.",
     "limits": "No connection or adiabatic Hamiltonian is supplied for the hardware. Neither a scalar phase nor absolute immunity to control noise is established.",
     "checks": "Explicit unitary holonomy and its unequal eigenvalues; flat diagonal-loop integration.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "T14",
@@ -195,7 +206,8 @@
     "checks": "Finite product-distribution concentration example, torus Lipschitz inequalities and a stationary maximum counterexample.",
     "references": [
       "R4"
-    ]
+    ],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "T15",
@@ -212,7 +224,8 @@
     "checks": "Bose-integral series enclosure and the factor of two relating energy flux to thermal conductance; no hardware-response simulation.",
     "references": [
       "R5"
-    ]
+    ],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "T16",
@@ -230,7 +243,8 @@
     "proof": "The exact numerator is at most p³Σw≥3 B_w p_star^(w−3), because each factor (1−p)^(15−w)≤1. Acceptance is at least (1−p)^15≥(1−p_star)^15. This proves the explicit A bound; p_star=0.01 satisfies the contraction condition. With x_n=sqrt(A)p_n, x_(n+1)≤x_n³; induction proves the displayed inequality and keeps the iterates in range. Taking logarithms yields the level count. A depth-n complete tree consumes 15^n raw states even before rejection; independent retries multiply expected consumption by 1/a at each level. Arbitrary ε means an error bound, not exact purity after finitely many rounds.",
     "limits": "The coefficient 35 is only leading order and cannot replace A in a rigorous upper bound. Parallel depth may scale with levels only under explicit factory, scheduling and code-distance assumptions. Noise in Clifford operations can create a nonzero error floor.",
     "checks": "Exact Fraction upper bound, small-p counterexample to 35p³, stable logarithmic recurrence, round estimate and expected resource calculation.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "T17",
@@ -246,7 +260,8 @@
     "proof": "For s≠t, pairing binary strings that differ in a bit of s XOR t cancels their character sum; for s=t every term is one. Orthogonality proves independence, uniqueness and reconstruction. In the adjoint encoding the Casimir is scalar on the physical block, so all physical diagonal matrices commute with it. The physical identity cannot lie in the Cartan span: all Cartan matrices have zero physical trace, while that identity has trace 248. The padding diagonal algebra itself has dimension eight; its identity Q is only one direction. Repeated zero weights further invalidate the claim of 248 distinct Cartan weights.",
     "limits": "The Lie-algebra center of E8 is zero. Maximal toral inside E8 does not mean maximal diagonal inside End(C^248). Diagonal Pauli completeness does not solve tensor-product multiplicities.",
     "checks": "Full 256-by-256 Walsh orthogonality, arbitrary diagonal reconstruction, Cartan-plus-padding rank and trace obstruction.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "T18",
@@ -263,7 +278,8 @@
     "checks": "Geometric-series bound and correlated-error counterexample at increasing separation.",
     "references": [
       "R6"
-    ]
+    ],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "T19",
@@ -282,7 +298,8 @@
     "checks": "Integer level-one integrability, adjoint-level condition, Casimir-convention arithmetic and scalar commutators.",
     "references": [
       "R2"
-    ]
+    ],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   },
   {
     "id": "T20",
@@ -299,6 +316,7 @@
     "proof": "Add the costs of gate applications, one matrix expectation and decoding calls; performing tasks concurrently is not a reason to multiply their individual costs. Repeat that trajectory S times when independent sampling is required. Hoeffding inequality for range length 2B gives failure probability at most 2 exp(−Sε²/(2B²)), and rearrangement gives S. A sparse Hamiltonian multiply may cost its nonzero count instead. For generic n-qubit pure states N=2^n, so polynomial dependence on N is exponential in n. A fixed-Hamming-weight sector has N=choose(n,w), provided all relevant operations preserve it.",
     "limits": "The first-248 encoding is not a Hamming sector. Arbitrary non-Clifford noisy physical-state simulation is not covered by a logical-register cost estimate or stabilizer tracking alone. Hamiltonian construction, optimization iterations, finite precision, output enumeration and measurement decomposition add costs. No efficient full tensor decomposition or 144-qubit simulation is proved.",
     "checks": "Exact binomial sampling tails versus Hoeffding, dimension and cost formulas, and a dense state-vector expectation example.",
-    "references": []
+    "references": [],
+    "_license": "MIT License\nCopyright (c) October 2026 Roger Cooperman; A.E. Petrunina V.V.\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n"
   }
 ]
