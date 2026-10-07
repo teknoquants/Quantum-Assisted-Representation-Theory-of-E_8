@@ -1,0 +1,252 @@
+[
+  {
+    "id": "original/GLOBAL",
+    "heading": "Abstract",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T1",
+    "heading": "Theorem 1 Complete reducibility of tensor modules",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/L1",
+    "heading": "Lemma 1 Weyl group order and complexity qualification",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/D1",
+    "heading": "Definition 1 Isometric register encoding",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T2",
+    "heading": "Theorem 2 Matrix unit Pauli expansion",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/C1",
+    "heading": "Corollary 1 Spectral normalization",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/D2",
+    "heading": "Definition 2 Deflated objective",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T3",
+    "heading": "Theorem 3 Exact vector deflation",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/C2",
+    "heading": "Corollary 2 Conditional padding isolation",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/D3",
+    "heading": "Definition 3 Excitation conserving ansatz",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T4",
+    "heading": "Theorem 4 Spectral projector dimension",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/C3",
+    "heading": "Corollary 3 Limits of subalgebra splitting",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/AL2",
+    "heading": "Lemma 2 Explicit E8 roots",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T5",
+    "heading": "Theorem 5 Excitation conserving Givens block",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/AL7",
+    "heading": "Lemma 7 Generator form of the Givens block",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T12",
+    "heading": "Theorem 12 Necessary support rule for root generators",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/D4",
+    "heading": "Definition 4 Root metric Casimir convention",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/D5",
+    "heading": "Definition 5 Adjoint trace normalization",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/TABLE1",
+    "heading": "Table 1 Generator dimensions and encoding",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/P1",
+    "heading": "Proposition 1 Conditional surface code resource count",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T6",
+    "heading": "Theorem 6 Parameter dependent smoothness bound",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/AL3",
+    "heading": "Lemma 3 Ideal syndrome extraction",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T7",
+    "heading": "Theorem 7 Minimum weight matching objective",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T8",
+    "heading": "Theorem 8 Conditional circuit scheduling count",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/L5",
+    "heading": "Lemma 5 Invariant root trace pairing",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T9",
+    "heading": "Theorem 9 Correct structure constant derivative",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/AD6",
+    "heading": "Definition 6 CSS stabilizer checks",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T10",
+    "heading": "Proposition 10 Conditions on geometric holonomy",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/AL6",
+    "heading": "Requirement 6 State preparation",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/T11",
+    "heading": "Requirement 11 Logical error scaling and threshold",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/P2",
+    "heading": "Proposition 2 Ideal phase error distillation model",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "original/L4",
+    "heading": "Lemma 4 Correct Cartan diagonal and Pauli expansion",
+    "manifest": "original/revised_claims.json"
+  },
+  {
+    "id": "update/F1",
+    "heading": "Supporting result 1 E8 algebraic data and reducibility",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/F2",
+    "heading": "Supporting result 2 Encoding and excitation sectors",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/F3",
+    "heading": "Supporting result 3 Casimir normalization and multiplicities",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/F4",
+    "heading": "Supporting result 4 Deflation and padding hypotheses",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/F5",
+    "heading": "Supporting result 5 Correct Givens gates and smoothness",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/F6",
+    "heading": "Supporting result 6 Surface code checks and resource assumptions",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/F7",
+    "heading": "Supporting result 7 Exact ideal distillation model",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/F8",
+    "heading": "Supporting result 8 Cartan normalization and diagonal coordinates",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/T13",
+    "heading": "Theorem 13 Separate level matching and WZW central charge",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/L6",
+    "heading": "Lemma 6 Decoder graph size and conditional complexity",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/T10",
+    "heading": "Theorem 10 Flat holonomy need not be scalar",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/T14",
+    "heading": "Theorem 14 Conditional gradient concentration without convergence",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/T15",
+    "heading": "Proposition 15 Conditional thermal response and distinct anomalies",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/T16",
+    "heading": "Theorem 16 Certified cubic distillation bound and resource growth",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/T17",
+    "heading": "Theorem 17 Complete diagonal Pauli basis",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/T18",
+    "heading": "Theorem 18 Exponential path bound under explicit noise assumptions",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/T19",
+    "heading": "Theorem 19 Scalar phases and level one integrability",
+    "manifest": "update/claims.json"
+  },
+  {
+    "id": "update/T20",
+    "heading": "Theorem 20 Conditional simulation and sampling costs",
+    "manifest": "update/claims.json"
+  }
+]

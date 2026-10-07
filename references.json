@@ -1,0 +1,32 @@
+[
+  {
+    "id": "R1",
+    "citation": "Witten, E. (1989). Quantum field theory and the Jones polynomial. Communications in Mathematical Physics 121, 351\u2013399.",
+    "url": "https://www.maths.ed.ac.uk/~v1ranick/papers/witten.pdf"
+  },
+  {
+    "id": "R2",
+    "citation": "Distler, J., and Sharpe, E. (2010). Heterotic compactifications with principal bundles for general groups and general levels. Advances in Theoretical and Mathematical Physics 14, 335\u2013398.",
+    "url": "https://arxiv.org/abs/hep-th/0701244"
+  },
+  {
+    "id": "R3",
+    "citation": "NetworkX documentation. max_weight_matching. Implementation-specific complexity and numerical-precision notes. Accessed 7 October 2026.",
+    "url": "https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.matching.max_weight_matching.html"
+  },
+  {
+    "id": "R4",
+    "citation": "McClean, J. R., et al. (2018). Barren plateaus in quantum neural network training landscapes. Nature Communications 9, 4812. This reference explains why concentration is not an optimization guarantee; the replacement bounded-differences proof is given in the text.",
+    "url": "https://arxiv.org/abs/1803.11173"
+  },
+  {
+    "id": "R5",
+    "citation": "Kane, C. L., and Fisher, M. P. A. (1997). Quantized thermal transport in the fractional quantum Hall effect. Physical Review B 55, 15832.",
+    "url": "https://arxiv.org/abs/cond-mat/9603118"
+  },
+  {
+    "id": "R6",
+    "citation": "Hastings, M. B., and Koma, T. (2006). Spectral gap and exponential decay of correlations. Communications in Mathematical Physics 265, 781\u2013804.",
+    "url": "https://arxiv.org/abs/math-ph/0507008"
+  }
+]

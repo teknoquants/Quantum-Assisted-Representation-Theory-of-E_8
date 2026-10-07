@@ -1,0 +1,1473 @@
+{
+  "meaning": "PASS means finite diagnostics and document synchronization succeeded, not a general proof or hardware certification.",
+  "document_sha256": "d9edc9288da88f98fd7df529c6676d28f470cc98304c1724918093a47a2ba891",
+  "introduction_paragraphs_matched": 6,
+  "bibliography_entries_matched": 19,
+  "suites": {
+    "original": {
+      "revision": 2,
+      "meaning": "PASS means diagnostics succeeded, not formal proof or implementation certification. Original-version failures are retained only as regression evidence.",
+      "document_sync": {
+        "claims_matched": 32,
+        "sha256": "d9edc9288da88f98fd7df529c6676d28f470cc98304c1724918093a47a2ba891"
+      }
+    },
+    "update": {
+      "meaning": "PASS means the diagnostic ran successfully. Finite checks are not formal proofs. Original verdicts refer to the uploaded draft, not the corrected statements.",
+      "document_sync": {
+        "matched_claim_groups": 18,
+        "sha256": "d9edc9288da88f98fd7df529c6676d28f470cc98304c1724918093a47a2ba891"
+      }
+    }
+  },
+  "results": [
+    {
+      "id": "original/GLOBAL",
+      "heading": "Abstract",
+      "revision": 2,
+      "statement": "The decomposition of tensor products of the exceptional Lie algebra E8 is a computational challenge in representation theory and mathematical physics, with potentially substantial memory and runtime demands for high-dimensional modules. Complexity depends on the algorithm, input encoding and required output; a universal exponential lower bound for classical approaches is not established here. This manuscript presents a deductive framework that formulates aspects of tensor product decomposition as a quantum spectral estimation problem. By mapping the tensor-product quadratic Casimir, constructed from coproduct generators, onto a multi-qubit system and using a Variational Quantum Eigensolver (VQE), the framework seeks to estimate spectral data relevant to constituent irreducible representations. A single Casimir spectrum need not distinguish all irreducible labels, and spectral projector traces give dimension-weighted sums of multiplicities. Recovering individual multiplicities therefore requires additional representation-theoretic information; polynomial-time full decomposition and global VQE convergence are not established. The framework connects abstract representation theory with fault-tolerant quantum information science through explicit generator-dependent Lipschitz bounds for optimization smoothness, ideal syndrome-extraction identities, and conditional error-correction resource models. Reproducible Python diagnostics support the finite mathematical checks, while complete fault-tolerant syndrome cycles and hardware performance guarantees remain implementation requirements.",
+      "justification": "For representations rho_lambda and rho_mu, the tensor generator is Delta(X) = rho_lambda(X) tensor I + I tensor rho_mu(X). The tensor Casimir must be built from these generators with a consistent invariant metric. Its eigenvalues partition the representation into spectral subspaces, but additional information is generally needed to recover irreducible labels and multiplicities. An adjoint-only 8-qubit calculation is not a calculation on the adjoint tensor square.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "GLOBAL",
+        "title": "Abstract and overall algorithm",
+        "source_paragraphs": "1–3",
+        "claim_status": "UNSUPPORTED",
+        "scope": "Polynomial-time full tensor decomposition is not established by VQE, and no generators, tensor-product Casimir, ansatz expressivity or optimization/measurement complexity proof is supplied.",
+        "execution": "PASS",
+        "evidence": {
+          "required_tensor_generators": "Delta(X)=X tensor I + I tensor X",
+          "required_tensor_casimir": "sum_a Delta(X_a)^2 (with a consistent invariant dual basis)",
+          "obstacles": [
+            "dimension mismatch",
+            "multiplicity versus eigenspace dimension",
+            "Casimir commuting ansatz cannot vary its expectation",
+            "no VQE global convergence bound",
+            "no full-spectrum sampling cost bound"
+          ]
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/T1",
+      "heading": "Theorem 1 Complete reducibility of tensor modules",
+      "revision": 2,
+      "statement": "Let g be the complex simple Lie algebra E8 and V(lambda), V(mu) finite dimensional irreducible highest weight modules. Their tensor product is isomorphic to a finite direct sum of V(nu) with uniquely determined nonnegative integer multiplicities N(lambda,mu;nu). Uniqueness concerns the isomorphism classes and multiplicities, not a canonical choice of embedded summands.",
+      "justification": "Weyl complete reducibility applies because g is semisimple and the tensor product is finite dimensional over a characteristic zero field. It gives existence of a direct sum decomposition. Schur lemma implies that the multiplicity of V(nu) is dim Hom_g(V(nu), V(lambda) tensor V(mu)), so it is independent of the chosen decomposition. The scripts check a dimension consistency example only; they do not formalize Weyl theorem.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T1",
+        "title": "Complete reducibility",
+        "source_paragraphs": "5–7",
+        "claim_status": "PARTIAL",
+        "scope": "Checks a dimension identity only; Weyl complete reducibility and uniqueness up to isomorphism need a proof. Highest-weight formulation requires the complex/split setting.",
+        "execution": "PASS",
+        "evidence": {
+          "adjoint_tensor_square_dimension": 61504,
+          "candidate_summand_dimensions": [
+            1,
+            248,
+            3875,
+            27000,
+            30380
+          ],
+          "note": "Dimension equality alone does not establish this decomposition."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/L1",
+      "heading": "Lemma 1 Weyl group order and complexity qualification",
+      "revision": 2,
+      "statement": "The Weyl group of E8 has order 2^14 * 3^5 * 5^2 * 7 = 696729600. This constant alone gives no exponential lower bound for classical tensor decomposition algorithms. Complexity statements must specify the input encoding, algorithm, output and varying parameters.",
+      "justification": "The product of the E8 invariant degrees 2, 8, 12, 14, 18, 20, 24, 30 gives the same integer. For fixed E8 and a fixed dominant weight lambda, the Weyl dimension formula for V(t lambda) is a product of 120 affine factors in t divided by constants. It is therefore polynomial in t, although not necessarily polynomial in the bit length of t. No claim that all algorithms enumerate the entire Weyl group is made.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "L1",
+        "title": "Classical bottleneck",
+        "source_paragraphs": "8–10",
+        "claim_status": "UNSUPPORTED",
+        "scope": "Correct Weyl order; fixed E8 Weyl order does not prove exponential growth in highest weights or a lower bound for all classical algorithms.",
+        "execution": "PASS",
+        "evidence": {
+          "weyl_order": 696729600,
+          "fixed_rank_degree_positive_roots": 120,
+          "note": "Weyl dimension along t*lambda is a product of 120 affine factors: polynomial in t; encoding size must be specified."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/D1",
+      "heading": "Definition 1 Isometric register encoding",
+      "revision": 2,
+      "statement": "For a module of dimension d, choose n = ceil(log2 d) qubits and an orthonormal basis. Define Phi(e_j) = |j> for 0 <= j < d, with zero padding on the remaining register states. For d = 1 take n = 0. A single adjoint E8 module has d = 248 and fits in eight qubits. The adjoint tensor square has d = 61504 and requires at least sixteen qubits under this encoding.",
+      "justification": "The computational basis vectors are orthonormal, hence Phi preserves all inner products by linearity. Conversely, an isometry is injective and requires 2^n >= d. The dimension 248 refers to the adjoint module, not to every fundamental highest weight representation of E8.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "D1",
+        "title": "Isometric qubit mapping",
+        "source_paragraphs": "12–14",
+        "claim_status": "REFUTED",
+        "scope": "An adjoint module fits in eight qubits; its tensor square does not. Not all fundamental E8 representations have dimension 248.",
+        "execution": "PASS",
+        "evidence": {
+          "adjoint_dimension": 248,
+          "tensor_square_dimension": 61504,
+          "minimum_tensor_square_qubits": 16,
+          "rank_obstruction": "An isometry from dimension 61504 to dimension 256 cannot exist."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Dimension bound checked on five dimensions."
+    },
+    {
+      "id": "original/T2",
+      "heading": "Theorem 2 Matrix unit Pauli expansion",
+      "revision": 2,
+      "statement": "Use most significant bit first tensor order. For n-bit indices i and j, |i><j| is the tensor product of the one-qubit matrix units |b_k(i)><b_k(j)|. The local identities are |0><0|=(I+Z)/2, |1><1|=(I-Z)/2, |1><0|=(X-iY)/2 and |0><1|=(X+iY)/2.",
+      "justification": "Each local identity follows by direct multiplication of the 2 by 2 Pauli matrices. Taking tensor products yields a matrix with its only nonzero entry equal to one at row i and column j. This is binary matrix encoding; no fermionic Jordan–Wigner transformation is asserted. The scripts exhaustively check the eight-qubit index mapping.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T2",
+        "title": "Matrix units and Pauli expansion",
+        "source_paragraphs": "15–17",
+        "claim_status": "VERIFIED_FINITE",
+        "scope": "Verifies all four one-qubit identities and all 65536 eight-qubit basis index mappings, using MSB-first tensor order. This is binary encoding, not a fermionic Jordan–Wigner transformation.",
+        "execution": "PASS",
+        "evidence": {
+          "local_identities": 4,
+          "global_matrix_units": 65536
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/C1",
+      "heading": "Corollary 1 Spectral normalization",
+      "revision": 2,
+      "statement": "Let C be a nonzero positive semidefinite Hermitian Casimir matrix in a specified compact Hermitian generator convention. Set c_max = ||C|| and C_tilde = C/c_max. Its spectrum lies in [0,1] and its maximum is one. The minimum need not be zero. For C=0, define C_tilde=0 separately.",
+      "justification": "Hermitian diagonalization gives eigenvalues 0 <= c_j <= c_max. Division gives c_j/c_max in [0,1]. The scale is fixed by requiring the maximum to be one, not merely by containment in [-1,1]. For an invariant metric in a nonorthonormal basis, the Casimir uses dual generators rather than an unqualified sum of squares.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "C1",
+        "title": "Casimir spectral normalization",
+        "source_paragraphs": "18–20",
+        "claim_status": "REFUTED",
+        "scope": "Positive Hermitian Casimir needs a compact Hermitian generator convention. Scaling does not generally send the minimum to zero and containment alone does not define a unique scale; c_max=0 is excluded.",
+        "execution": "PASS",
+        "evidence": {
+          "original_spectrum": [
+            2.0,
+            4.0
+          ],
+          "scaled_spectrum": [
+            0.5,
+            1.0
+          ],
+          "alternative_valid_scale": 8,
+          "correct_statement": "For nonzero PSD C, C/||C|| has spectrum in [0,1] with maximum 1."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Zero and nonzero normalization cases checked."
+    },
+    {
+      "id": "original/D2",
+      "heading": "Definition 2 Deflated objective",
+      "revision": 2,
+      "statement": "Given a specified padded Hermitian matrix H, normalized states psi_j, real penalties beta_j and the orthogonal projector Q onto padding states, define H_def = H + sum_j beta_j |psi_j><psi_j| + beta_leak Q. Exact eigenvector deflation and approximate-state deflation are distinct settings.",
+      "justification": "Every outer product and Q is Hermitian, so H_def is Hermitian. If the psi_j are orthonormal, their rank one projectors are pairwise orthogonal. The definition by itself imposes no convergence, no exact leakage suppression and no recovery of an entire irreducible summand.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "D2",
+        "title": "Deflated cost Hamiltonian",
+        "source_paragraphs": "22–23",
+        "claim_status": "VERIFIED_EXAMPLE",
+        "scope": "Checks Hermiticity and projector arithmetic for real coefficients; requires normalized states and a specified padded Hamiltonian.",
+        "execution": "PASS",
+        "evidence": {
+          "spectrum": [
+            0.4,
+            1.0,
+            2.5,
+            5.0
+          ]
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/T3",
+      "heading": "Theorem 3 Exact vector deflation",
+      "revision": 2,
+      "statement": "Let H have orthonormal eigenvectors psi_j and spectrum in [a,b]. Suppose a proper subset of these eigenvectors is penalized and at least one is unpenalized. If beta_j > b - lambda_j for every penalized eigenvector, every global ground state of H + sum_j beta_j |psi_j><psi_j| is orthogonal to their span. The common bound beta_j > b-a is sufficient.",
+      "justification": "The operator is diagonal in the eigenbasis of H. Penalized eigenvalues become lambda_j+beta_j>b; every unpenalized eigenvalue remains at most b. Thus none of the penalized vectors belongs to its ground space. The conclusion excludes only the penalized vectors, not other vectors in the same irrep or degenerate eigenspace. It does not guarantee that VQE finds a global minimum. On [0,1], beta=2.5 is sufficient but unnecessarily large; approximate eigenvectors need separate bounds.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T3",
+        "title": "Deflation penalty",
+        "source_paragraphs": "24–26",
+        "claim_status": "REFUTED",
+        "scope": "Exact-state deflation excludes penalized vectors at the global minimum, not the entire irrep/eigenspace, and does not guarantee VQE convergence. Approximate eigenvectors require further analysis.",
+        "execution": "PASS",
+        "evidence": {
+          "deflated_spectrum": [
+            0.0,
+            1.0,
+            2.5
+          ],
+          "counterexample": "Unpenalized vector in the SAME original degenerate eigenspace remains ground state.",
+          "sufficient_exact_vector_bound": "beta_j > lambda_max-lambda_j; spectral width is sufficient, not necessary."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Exact-vector sufficient bound checked, including degeneracy."
+    },
+    {
+      "id": "original/C2",
+      "heading": "Corollary 2 Conditional padding isolation",
+      "revision": 2,
+      "statement": "Assume H is block diagonal on physical and padding subspaces. Let a_phys be the minimum physical eigenvalue of H including any physical deflation terms, and a_pad the minimum padding eigenvalue before the padding penalty. If a_pad + beta_leak > a_phys, every global ground state has zero padding support.",
+      "justification": "The two spectra remain separate blocks and the penalty shifts only the padding block. A strict comparison of their minimum eigenvalues proves the statement. A value beta_leak=5 works for zero padding and an available unpenalized physical eigenvalue at most one. Coupling the blocks can leave nonzero leakage at any finite penalty; restricted ansatz expressivity and optimization errors also prevent a general VQE guarantee.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "C2",
+        "title": "Leakage penalty",
+        "source_paragraphs": "27–29",
+        "claim_status": "CONDITIONAL",
+        "scope": "Global-minimum guarantee needs invariant blocks, accessible physical states and an energy gap. Finite penalty does not remove leakage if Hamiltonian couples the blocks; optimizer convergence is separate.",
+        "execution": "PASS",
+        "evidence": {
+          "coupled_block_ground_leakage": 0.03576165455737034,
+          "decoupled_unpenalized_model_gap": 4
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Block invariant padding gap checked."
+    },
+    {
+      "id": "original/D3",
+      "heading": "Definition 3 Excitation conserving ansatz",
+      "revision": 2,
+      "statement": "Define N = sum_k (I-Z_k)/2. A gate conserves Hamming weight when [N,G]=0. This condition is distinct from [C_tilde,G]=0. Casimir commutation is not imposed on an ansatz intended to change the Casimir expectation.",
+      "justification": "If U commutes with C_tilde, then <psi|U dagger C_tilde U|psi> = <psi|C_tilde|psi>. Such an ansatz cannot vary that objective from a fixed input. A circuit made only of excitation conserving gates also keeps the vacuum in the zero-excitation sector, so a nontrivial starting sector requires a preparation operation.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "D3",
+        "title": "Symmetry-preserving architecture",
+        "source_paragraphs": "31–32",
+        "claim_status": "REFUTED",
+        "scope": "Commuting with a Casimir is not equivalent to Hamming-weight conservation. A Casimir-preserving ansatz also cannot change the Casimir expectation from a fixed initial state.",
+        "execution": "PASS",
+        "evidence": {
+          "casimir_commutator_norm": 0.0,
+          "number_commutator_norm": 2.0
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Corrected complex Givens family, exponential and number commutation checked at 12 parameter pairs."
+    },
+    {
+      "id": "original/T4",
+      "heading": "Theorem 4 Spectral projector dimension",
+      "revision": 2,
+      "statement": "If P_c projects onto a Casimir eigenspace, then Tr(P_c) = sum over nu with c_nu=c of N(lambda,mu;nu) dim V(nu). For an orthonormal basis psi_1,...,psi_m of that eigenspace, P_c = sum_k |psi_k><psi_k| and Tr(P_c)=m.",
+      "justification": "On each irreducible summand the central Casimir is scalar by Schur lemma. Every copy contributes its full module dimension to the corresponding eigenspace. Trace of each normalized rank one projector is one. If a single irrep label is known to occur at c, its multiplicity is Tr(P_c)/dim V(nu). Counting only highest weight vectors requires a separately specified highest weight restriction. Multiple runs alone do not certify completeness or orthogonality.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T4",
+        "title": "Trace projector multiplicity",
+        "source_paragraphs": "33–35",
+        "claim_status": "REFUTED",
+        "scope": "Trace counts eigenspace dimension, which is sum N_nu*dim(V_nu) over irreps sharing the eigenvalue. Independent runs need not span it. Highest-weight-only counting requires a separately enforced restriction.",
+        "execution": "PASS",
+        "evidence": {
+          "single_adjoint_irrep_multiplicity": 1,
+          "its_casimir_eigenspace_trace": 248,
+          "trace_identity": "For m orthonormal vectors trace(sum |psi><psi|)=m; this is not generally irrep multiplicity."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Shared-eigenvalue dimension sum checked for repeated irreps."
+    },
+    {
+      "id": "original/C3",
+      "heading": "Corollary 3 Limits of subalgebra splitting",
+      "revision": 2,
+      "statement": "An so(16) Casimir may refine some E8 Casimir eigenspaces, but it is not guaranteed to distinguish all E8 labels or repeated copies. The perturbation C_E8 + delta C_so16 requires explicit branching data and a chosen normalization; no universal multiplicity formula follows from the number of split lines.",
+      "justification": "The E8 Casimir commutes with represented subalgebra operators. On an isotypic component V(nu) tensor C^m, every represented enveloping-algebra operator acts as an operator on V(nu) tensor I_m. Thus identical copies remain indistinguishable to this perturbation. Distinct branching components can also share subalgebra Casimir values.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "C3",
+        "title": "SO16 degeneracy resolution",
+        "source_paragraphs": "36–38",
+        "claim_status": "REFUTED",
+        "scope": "Subalgebra Casimir need not separate modules and never separates identical multiplicity copies by itself.",
+        "execution": "PASS",
+        "evidence": {
+          "two_identical_copies_subalgebra_spectrum": [
+            1.0,
+            1.0,
+            2.0,
+            2.0
+          ],
+          "reason": "Lie algebra operators act identically on repeated copies."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/AL2",
+      "heading": "Lemma 2 Explicit E8 roots",
+      "revision": 2,
+      "statement": "Use R_int consisting of all vectors with exactly two entries equal to plus or minus one and six zero entries. Use R_half consisting of all eight-tuples of plus or minus one half with an even number of negative signs. Their union has 240 vectors of squared length two and spans R^8.",
+      "justification": "There are choose(8,2)*4=112 integer roots and 2^7=128 half roots. The norm calculation gives two in both cases. In doubled integer coordinates the scripts also exhaustively verify crystallographic integrality and reflection closure for all 57600 ordered root pairs, as well as rank eight. These checks supplement the count and norm argument; equal lengths alone would not establish a root system.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "AL2",
+        "title": "Explicit E8 roots",
+        "source_paragraphs": "40–42",
+        "claim_status": "VERIFIED_FINITE",
+        "scope": "Exhaustive exact count, norm, integrality and reflection closure checks; uniform length alone was not a root-system proof.",
+        "execution": "PASS",
+        "evidence": {
+          "integer_roots": 112,
+          "half_integer_roots": 128,
+          "reflection_pairs": 57600,
+          "rank": 8,
+          "norm_squared": 2
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/T5",
+      "heading": "Theorem 5 Excitation conserving Givens block",
+      "revision": 2,
+      "statement": "Define G(theta,phi) as the identity on |00> and |11>, with block [[cos(theta), -exp(-i phi)sin(theta)], [exp(i phi)sin(theta), cos(theta)]] on the ordered basis |01>, |10>. Then G is unitary and commutes with N. In general this complex family is not a real SO(4) matrix.",
+      "justification": "The columns of the central block are orthonormal. Both vectors in that block have excitation number one, while the other basis vectors remain fixed; hence the commutator with N is zero. The previously stated two-CNOT factorization is withdrawn: its literal tensor dimensions disagree, and removing the extra identity still yields excitation-changing transitions. No exact native gate count is asserted for this corrected family.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T5",
+        "title": "Givens gate decomposition",
+        "source_paragraphs": "43–45",
+        "claim_status": "REFUTED",
+        "scope": "Literal CNOT tensor I is 8x8 and cannot multiply I tensor Ry (4x4). Even deleting the extra I gives a non-weight-preserving gate.",
+        "execution": "PASS",
+        "evidence": {
+          "zero_to_one_excitation_probability": 0.11757890635775578,
+          "commutator_norm": 0.6857956149109027,
+          "correct_real_givens_example": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.7648421872844885,
+              -0.644217687237691,
+              0.0
+            ],
+            [
+              0.0,
+              0.644217687237691,
+              0.7648421872844885,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "note": "A phase-bearing complex Givens family is generally unitary, not real SO(4)."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Corrected complex Givens family, exponential and number commutation checked at 12 parameter pairs."
+    },
+    {
+      "id": "original/AL7",
+      "heading": "Lemma 7 Generator form of the Givens block",
+      "revision": 2,
+      "statement": "Let K_phi be zero on |00> and |11> and equal to [[0,-i exp(-i phi)], [i exp(i phi),0]] on |01>,|10>. Then G(theta,phi)=exp(-i theta K_phi), with G as in Theorem 5.",
+      "justification": "K_phi is Hermitian and its square is the identity on the excitation-one block. The exponential there is cos(theta) I - i sin(theta) K_phi, which gives the stated block. On the other two states the exponential is the identity. This is a generator identity, not a hardware synthesis or a two-CNOT resource theorem.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "AL7",
+        "title": "Explicit Givens factorization",
+        "source_paragraphs": "46–48",
+        "claim_status": "REFUTED",
+        "scope": "Same malformed dimensions and counterexample as Theorem 5; the proof multiplication does not produce the claimed block structure.",
+        "execution": "PASS",
+        "evidence": {
+          "zero_to_one_excitation_probability": 0.11757890635775578,
+          "commutator_norm": 0.6857956149109027,
+          "correct_real_givens_example": [
+            [
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.7648421872844885,
+              -0.644217687237691,
+              0.0
+            ],
+            [
+              0.0,
+              0.644217687237691,
+              0.7648421872844885,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "note": "A phase-bearing complex Givens family is generally unitary, not real SO(4)."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Corrected complex Givens family, exponential and number commutation checked at 12 parameter pairs."
+    },
+    {
+      "id": "original/T12",
+      "heading": "Theorem 12 Necessary support rule for root generators",
+      "revision": 2,
+      "statement": "In a weight basis, a matrix element of E_alpha from weight omega to weight eta can be nonzero only if eta=omega+alpha. Root coordinates alone do not determine all coefficients, cocycle signs or actions on the eight-dimensional zero-weight Cartan space of the adjoint module.",
+      "justification": "For a weight vector v, the relation [H,E_alpha]=alpha(H)E_alpha implies H(E_alpha v)=(omega(H)+alpha(H))E_alpha v. Thus a nonzero image has weight omega+alpha. The converse is false: in the adjoint representation [E_alpha,H]=-alpha(H)E_alpha can vanish for a nonzero H even though the weight difference is alpha. A complete construction requires a basis and compatible bracket constants.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T12",
+        "title": "Root generator coefficients",
+        "source_paragraphs": "49–51",
+        "claim_status": "REFUTED",
+        "scope": "Root differences supply a necessary support rule, not all amplitudes or cocycle signs. Eight zero-weight Cartan directions require coefficients depending on alpha(H).",
+        "execution": "PASS",
+        "evidence": {
+          "root": [
+            -0.5,
+            -0.5,
+            -0.5,
+            -0.5,
+            -0.5,
+            -0.5,
+            -0.5,
+            -0.5
+          ],
+          "nonzero_cartan_vector_with_zero_action": [
+            1.0,
+            -1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "alpha_H": 0.0,
+          "missing_data": "Explicit ordered Cartan basis and a consistent cocycle/structure constants. A root-minus-zero weight match does not imply a nonzero entry."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/D4",
+      "heading": "Definition 4 Root metric Casimir convention",
+      "revision": 2,
+      "statement": "With long roots of squared length two, define c_root(lambda)=(lambda,lambda+2 rho). In this convention the adjoint value for E8 is 60. If C_A is defined as one half of this Casimir, its adjoint value is 30, the dual Coxeter number.",
+      "justification": "The normalization factor must be part of the definition. The root enumeration computes rho as half the positive-root sum and evaluates the highest-root expression as 60. The half-scaled convention then gives 30. These conventions must not be mixed with the trace-normalized basis below.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "D4",
+        "title": "Casimir convention A",
+        "source_paragraphs": "52–53",
+        "claim_status": "CONDITIONAL",
+        "scope": "h_dual=30 is compatible with one Casimir convention. With roots of squared length 2 and c(lambda)=(lambda,lambda+2rho), adjoint value is 60; a factor 1/2 gives 30.",
+        "execution": "PASS",
+        "evidence": {
+          "root_length_two_casimir": 60.0,
+          "half_scaled_convention": 30.0,
+          "positive_roots": 120
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/D5",
+      "heading": "Definition 5 Adjoint trace normalization",
+      "revision": 2,
+      "statement": "Let X_a be an invariant orthonormal Hermitian generator basis acting on the irreducible 248-dimensional adjoint module, with Tr(X_a X_b)=delta_ab. Then sum_a X_a^2 = I_248.",
+      "justification": "The invariant quadratic sum is central, hence a scalar cI by Schur lemma. Its trace is sum_a Tr(X_a^2)=248, while Tr(cI)=248c, so c=1. This argument assumes the specified basis and irreducibility; it does not construct the generators. A root basis E_alpha is paired with E_minus_alpha rather than being a Hermitian orthonormal basis itself.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "D5",
+        "title": "Trace normalized Casimir",
+        "source_paragraphs": "52–53",
+        "claim_status": "CONDITIONAL",
+        "scope": "If an invariant orthonormal Hermitian basis gives a central Casimir in the irreducible adjoint module, taking its trace gives c=dim(g)/dim(V)=1. Does not construct the 248 generators.",
+        "execution": "PASS",
+        "evidence": {
+          "casimir_scalar_from_trace": 1.0,
+          "required_assumptions": "Invariant metric, Hermitian basis, centrality and irreducibility."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/TABLE1",
+      "heading": "Table 1 Generator dimensions and encoding",
+      "revision": 2,
+      "statement": "The adjoint module has eight Cartan directions and 240 root directions, with the roots divided into 112 integer and 128 half-integer coordinates. Eight computational states are padding for an eight-qubit adjoint register. Cartan matrices are diagonal in a weight basis and have expansions in I and Z strings.",
+      "justification": "No fixed Pauli locality or dense-block property follows from integer versus half-integer root coordinates. Root generators obey weight-shift support, while their actual Pauli expansions depend on the matrices and basis order. Padding penalties are diagonal and also admit I/Z expansions. The dimensions add to 248, and 256-248=8.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "TABLE1",
+        "title": "Generator subset and locality table",
+        "source_paragraphs": "54–74",
+        "claim_status": "UNSUPPORTED",
+        "scope": "Counts are correct; Pauli locality depends on basis ordering and actual matrices. Root coordinates alone do not establish 2-local or 8-local expansions, dense blocks, or antisymmetry.",
+        "execution": "PASS",
+        "evidence": {
+          "algebra_dimension": 248,
+          "padding_dimension": 8,
+          "eight_bit_transition_example": [
+            0,
+            255
+          ],
+          "note": "Illustrates encoding dependence; not a constructed E8 generator."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/P1",
+      "heading": "Proposition 1 Conditional surface code resource count",
+      "revision": 2,
+      "statement": "For eight independent distance-three rotated patches using nine data qubits and eight syndrome ancillas per patch, the baseline count is 8*(9+8)=136. Adding an assumed eight routing or flag ancillas gives 144. This is a resource budget under stated assumptions, not a proof that 144 qubits suffice for all logical gates.",
+      "justification": "The count is direct arithmetic. The sixteen logical qubits needed for a direct adjoint tensor-square encoding would require a 16*17=272 baseline under the same patch model, before routing and resource states. Distillation, gate synthesis, scheduling, connectivity and repeated syndrome extraction require separate resource analysis.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "P1",
+        "title": "Surface code overhead",
+        "source_paragraphs": "76–78",
+        "claim_status": "CONDITIONAL",
+        "scope": "Arithmetic is correct for eight chosen 17-qubit patches plus eight extra ancillas. Exact routing, logical gates and distillation resource sufficiency are not established.",
+        "execution": "PASS",
+        "evidence": {
+          "data": 72,
+          "syndrome_ancillas": 64,
+          "extra_assumed": 8,
+          "total": 144,
+          "tensor_square_16_logical_baseline": 272
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/T6",
+      "heading": "Theorem 6 Parameter dependent smoothness bound",
+      "revision": 2,
+      "statement": "For a normalized state psi, Hermitian H and G, let E(theta)=<psi|exp(i theta G) H exp(-i theta G)|psi>. Then |E second derivative(theta)| <= 4 ||G||^2 ||H||, so the derivative is globally Lipschitz with this bound. Parameter generator norms cannot be omitted.",
+      "justification": "Twice differentiating gives an expectation of a conjugated negative double commutator [G,[G,H]]. Using ||[A,B]|| <= 2||A||||B|| proves the bound. For a fixed ordered product of one-parameter gates exp(-i theta_j G_j), mixed derivatives are bounded by 4||H||||G_j||||G_k||, giving the sufficient Euclidean gradient bound L <= 4||H|| sum_j ||G_j||^2. For normalized deflation projectors, ||H_def|| <= ||H|| + sum_j |beta_j| + |beta_leak|. Smoothness is not a global convergence guarantee.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T6",
+        "title": "Gradient Lipschitz bound",
+        "source_paragraphs": "80–82",
+        "claim_status": "REFUTED",
+        "scope": "No bound independent of parameter generator norms and number of parameters follows from ||H|| alone.",
+        "execution": "PASS",
+        "evidence": {
+          "H_norm": 1,
+          "generator_norm": 10,
+          "exact_gradient_Lipschitz": 400,
+          "claimed_bound_without_penalties": 2,
+          "repair": "For one exponential parameter, |E second derivative| <= 4||G||^2||H||. Multiple parameters require a Hessian norm bound."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Single and two-parameter bound saturation checked; general proof is in manuscript."
+    },
+    {
+      "id": "original/AL3",
+      "heading": "Lemma 3 Ideal syndrome extraction",
+      "revision": 2,
+      "statement": "A Z parity check can be extracted by initializing an ancilla in |0>, applying data-controlled CNOTs into it and measuring Z. An X parity check uses an ancilla in |+>, ancilla-controlled CNOTs and an X-basis measurement, equivalently a final Hadamard followed by Z measurement.",
+      "justification": "For computational data bits the target ancilla accumulates their XOR, which is the eigenvalue sign of the Z product. Conjugating by Hadamards yields the X version. These identities describe ideal checks only. Boundary checks may have weight two; scheduling, hook errors, measurement errors, repeated rounds and timing must be addressed before claiming fault tolerance. There are 64 syndrome ancillas in the assumed eight-patch budget.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "AL3",
+        "title": "Syndrome measurement cycle",
+        "source_paragraphs": "83–85",
+        "claim_status": "PARTIAL",
+        "scope": "Verifies ideal parity extraction. Full fault tolerance needs a circuit schedule, X-basis readout, hook-error control, noise model and timing data, none supplied.",
+        "execution": "PASS",
+        "evidence": {
+          "Z_parity_inputs_checked": 16,
+          "syndrome_ancilla_count": 64,
+          "X_readout_requirement": "Measure in X basis or apply Hadamard before computational readout."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/T7",
+      "heading": "Theorem 7 Minimum weight matching objective",
+      "revision": 2,
+      "statement": "For an even defect set with a feasible matching graph, minimum weight perfect matching minimizes the sum of its supplied edge weights. Minimizers need not be unique. Under an independent edge error model with 0<p_e<1/2, a chain cost uses log((1-p_e)/p_e), up to constants.",
+      "justification": "The probability of a chain with selected error edges is proportional to the product of p_e/(1-p_e); its negative logarithm is additive. Translating to pairwise shortest paths additionally needs compatible boundary treatment. A square with unit side lengths has two optimal pairings of cost two, disproving uniqueness. Maximum likelihood of a chain differs from maximum likelihood of a logical class, which sums many chains. Matching cannot guarantee logical correctness for every syndrome and error.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T7",
+        "title": "MWPM uniqueness and logical correctness",
+        "source_paragraphs": "86–88",
+        "claim_status": "REFUTED",
+        "scope": "Minimum matchings need not be unique; same syndrome does not imply same logical class. Chain likelihood maximization also differs from summing probabilities over a logical class.",
+        "execution": "PASS",
+        "evidence": {
+          "square_matching_costs": [
+            2,
+            4,
+            2
+          ],
+          "number_of_optima": 2,
+          "positive_log_odds_requires": "0 < p < 1/2",
+          "logical_ambiguity_example": "110 versus 001 in repetition code; correction may leave logical 111."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/T8",
+      "heading": "Theorem 8 Conditional circuit scheduling count",
+      "revision": 2,
+      "statement": "One nearest-neighbor brickwork layer on eight qubits contains four disjoint even-pair blocks and three disjoint odd-pair blocks. If each intended block has a synthesis of g two-qubit gates and two-qubit depth t, D layers admit a schedule with at most 7gD gates and depth at most 2tD, under parallel disjoint-pair execution.",
+      "justification": "Each parity block executes its four or three pair circuits concurrently. The two parity blocks are sequential, giving the stated count and depth. Values g=t=2 would give 14D gates and 4D depth only after a valid synthesis is supplied. The withdrawn factorization does not supply one. Fault tolerant implementation and connectivity overhead may change these logical-level costs.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T8",
+        "title": "Circuit depth and gate count",
+        "source_paragraphs": "89–91",
+        "claim_status": "CONDITIONAL",
+        "scope": "Scheduling count assumes each valid intended gate has the proposed two-CNOT implementation. T5 does not establish it. Logical/fault-tolerant native depth is additional.",
+        "execution": "PASS",
+        "evidence": {
+          "blocks_per_layer": 7,
+          "conditional_CNOT_count_per_layer": 14,
+          "conditional_CNOT_depth_per_layer": 4,
+          "D_layers": "14*D gates, 4*D scheduled CNOT tiers; optimization may reduce these counts."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/L5",
+      "heading": "Lemma 5 Invariant root trace pairing",
+      "revision": 2,
+      "statement": "For an invariant trace form B(X,Y)=Tr(rho(X)rho(Y)), root vectors have B(E_alpha,E_beta)=0 unless beta=-alpha. For nonzero opposite-root pairing, vectors may be scaled to satisfy B(E_alpha,E_minus_alpha)=1; then Tr([H,E_alpha]E_minus_alpha)=alpha(H). Bracket constants must use the same scaling.",
+      "justification": "Invariance gives (alpha(H)+beta(H)) B(E_alpha,E_beta)=0 for every H. If alpha+beta is nonzero, choose H where it does not vanish. For beta=-alpha the last identity follows immediately from the root commutator relation and normalization. Bilinear trace orthogonality is not a statement that the associated Pauli coefficient supports are disjoint.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "L5",
+        "title": "Root trace orthogonality",
+        "source_paragraphs": "92–94",
+        "claim_status": "PARTIAL",
+        "scope": "Checks matrix trace identities in an A2 root subsystem model. Full E8 matrices and normalization are not supplied; bilinear trace orthogonality alone is not disjoint Pauli support.",
+        "execution": "PASS",
+        "evidence": {
+          "Tr_Ealpha_Eminusalpha": 1.0,
+          "root_evaluation": 3,
+          "scope": "A2 matrix identity only; invariant-form argument proves general orthogonality when hypotheses hold."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/T9",
+      "heading": "Theorem 9 Correct structure constant derivative",
+      "revision": 2,
+      "statement": "Assume E_minus_alpha = E_alpha dagger, the root trace pairing of Lemma 5, and alpha+beta is a root. Put K=E_alpha+E_minus_alpha, U(theta)=exp(-i theta K), and f(theta)=Tr(U(theta) E_beta U(theta) dagger E_minus_(alpha+beta)). Then f prime(0)=-i N_alpha,beta, so N_alpha,beta=i f prime(0).",
+      "justification": "Differentiating at zero gives -i[K,E_beta]. The E_alpha bracket contributes -i N_alpha,beta by the normalized trace pairing; the E_minus_alpha bracket has a different weight and pairs to zero. No universal two-point parameter-shift formula is asserted. Such a rule requires generator spectral gaps and suitable shift coefficients; this trace can be complex.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T9",
+        "title": "Structure constant derivative",
+        "source_paragraphs": "95–97",
+        "claim_status": "REFUTED",
+        "scope": "The displayed derivative equals -i*N under the stated trace normalization, not N. A two-point shift rule requires specified generator spectral gaps and shifts.",
+        "execution": "PASS",
+        "evidence": {
+          "structure_constant": 1,
+          "derivative": "-1j",
+          "correct_extraction": "N = i * derivative, assuming the other root contribution has zero trace pairing."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "Corrected factor i recovers the A2 coefficient."
+    },
+    {
+      "id": "original/AD6",
+      "heading": "Definition 6 CSS stabilizer checks",
+      "revision": 2,
+      "statement": "For data-qubit supports A and B, define X(A) and Z(B) as products of X and Z on their respective supports. They commute exactly when |A intersect B| is even. A CSS code uses binary check matrices satisfying H_X H_Z transpose = 0 over F_2, together with independent compatible stabilizer generators.",
+      "justification": "Moving X(A) past Z(B) produces the sign (-1) raised to the overlap size. Thus even overlap is necessary and sufficient. The scripts specify an explicit nine-data-qubit patch with four independent X checks and four independent Z checks, verify all overlaps and exhaustively find CSS distances three. Boundary checks include weight two. The 144-qubit budget includes measurement ancillas, which are not all persistent encoded data qubits.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "AD6",
+        "title": "Stabilizer checks",
+        "source_paragraphs": "98–100",
+        "claim_status": "CONDITIONAL",
+        "scope": "CSS commutation is equivalent to even overlap. Verifies explicit nine-data-qubit distance-3 patch; source gives no 144-qubit check matrix, and boundary checks can have weight two.",
+        "execution": "PASS",
+        "evidence": {
+          "X_supports": [
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              2,
+              4,
+              5
+            ],
+            [
+              3,
+              4,
+              6,
+              7
+            ],
+            [
+              7,
+              8
+            ]
+          ],
+          "Z_supports": [
+            [
+              0,
+              1,
+              3,
+              4
+            ],
+            [
+              2,
+              5
+            ],
+            [
+              3,
+              6
+            ],
+            [
+              4,
+              5,
+              7,
+              8
+            ]
+          ],
+          "overlap_matrix": [
+            [
+              2,
+              0,
+              0,
+              0
+            ],
+            [
+              2,
+              2,
+              0,
+              2
+            ],
+            [
+              2,
+              0,
+              2,
+              2
+            ],
+            [
+              0,
+              0,
+              0,
+              2
+            ]
+          ],
+          "logical_qubits_per_example_patch": 1,
+          "CSS_distances": [
+            3,
+            3
+          ]
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/T10",
+      "heading": "Proposition 10 Conditions on geometric holonomy",
+      "revision": 2,
+      "statement": "A connection defines a path-ordered holonomy around a closed loop. Flatness on the allowed region gives homotopy invariance for based loops under the usual connection assumptions, but does not imply scalar holonomy. A scalar phase requires an additional restriction on the holonomy representation. No E8 hardware protection follows without an explicit connection and physical model.",
+      "justification": "On an annulus, take A=iZ dphi/8. The curvature vanishes, yet the closed-loop holonomy is diag(exp(i*pi/4), exp(-i*pi/4)), which is not scalar. For an adiabatic implementation, spectral gaps, path control and errors require their own analysis. The earlier scalar and noise-protection assertions are therefore withdrawn.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T10",
+        "title": "Holonomic twisting",
+        "source_paragraphs": "101–103",
+        "claim_status": "REFUTED",
+        "scope": "Flatness does not force scalar non-Abelian holonomy. No connection, singularity set or adiabatic gap is specified for the claimed E8 model.",
+        "execution": "PASS",
+        "evidence": {
+          "flat_connection": "A=i*Z*dphi/8 on an annulus",
+          "holonomy_diagonal": [
+            "(0.7071067811865476+0.7071067811865475j)",
+            "(0.7071067811865476-0.7071067811865475j)"
+          ],
+          "reason": "dA=0 and A wedge A=0, yet holonomy is not scalar."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/AL6",
+      "heading": "Requirement 6 State preparation",
+      "revision": 2,
+      "statement": "A preparation unitary U_init must be explicitly specified and checked against a target normalized vector psi_target in the encoded physical subspace. Exact preparation requires U_init|0...0>=psi_target up to global phase; padding avoidance alone requires Q U_init|0...0>=0.",
+      "justification": "The vacuum has no padding support in the chosen ordering, but that does not identify it with a desired highest weight vector. Gates commuting with excitation number cannot move it into a nonzero-excitation sector. Root intersection angles do not define a unique preparation circuit. Initialization remains an implementation requirement until a target and circuit are provided.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "AL6",
+        "title": "State initialization",
+        "source_paragraphs": "104–106",
+        "claim_status": "UNSPECIFIED",
+        "scope": "No preparation circuit or parameter formula is given. Weight-preserving Givens blocks leave vacuum in its zero-excitation sector, so additional preparation is required.",
+        "execution": "PASS",
+        "evidence": {
+          "vacuum_leakage": 0,
+          "vacuum_Hamming_weight": 0,
+          "missing": "Target vector, explicit initialization operator and angles; root intersection angles do not specify these."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/T11",
+      "heading": "Requirement 11 Logical error scaling and threshold",
+      "revision": 2,
+      "statement": "A distance-three code with an appropriate fault tolerant extraction circuit and decoder may have leading logical failure probability of order p^2 per specified round or experiment. The coefficient and threshold depend on the full noise, circuit and decoder model. No numerical 1.1 percent threshold is established here.",
+      "justification": "If all single faults are correctable and some two-fault events fail, a small-p expansion begins quadratically. Distance of the data code alone does not establish circuit-level fault tolerance. Threshold estimation requires a family of distances and explicit experiments with uncertainty estimates. Scaling in physical error p must not be confused with scaling in runtime or circuit depth. The scripts illustrate the quadratic expansion with an exactly enumerated repetition-code example, not a surface-code threshold simulation.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "T11",
+        "title": "Logical error threshold",
+        "source_paragraphs": "107–109",
+        "claim_status": "UNSUPPORTED",
+        "scope": "Quadratic small-p behavior is plausible under an appropriate distance-3 circuit/decoder, but no simulation or noise/schedule data supports 1.1%. A threshold requires a distance family; p scaling is not depth scaling.",
+        "execution": "PASS",
+        "evidence": {
+          "illustrative_repetition_failure_at_p001": 2.9980000000000003e-06,
+          "leading_power": 2,
+          "surface_code_threshold_result": null,
+          "required_inputs": "Circuit-level noise, syndrome rounds, decoder boundary handling, code-distance sweep and confidence intervals."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/P2",
+      "heading": "Proposition 2 Ideal phase error distillation model",
+      "revision": 2,
+      "statement": "Consider a specified ideal 15-to-1 phase-error model with independent input errors of probability p and perfect Clifford operations. Label the 15 positions by the nonzero four-bit vectors. Accept error patterns whose label XOR is zero; an accepted odd-weight pattern is a logical error. Let A_w and B_w count accepted and accepted odd patterns of weight w. Then p_out = sum_w B_w p^w(1-p)^(15-w) / sum_w A_w p^w(1-p)^(15-w).",
+      "justification": "Enumeration gives B_1=B_2=0 and B_3=35, with A_0=1, so p_out=35p^3+O(p^4). The nontrivial fixed point of the full ratio is approximately 0.14148. The truncated equation p=35p^3 instead gives 1/sqrt(35), approximately 0.16903, and cannot justify 14.1 percent. A conventional T resource is T|+>=(|0>+exp(i*pi/4)|1>)/sqrt(2); the real state cos(pi/8)|0>+sin(pi/8)|1> uses an H-type convention and needs an explicit conversion/noise convention. This model establishes neither mandatory use of this protocol nor a complete resource budget for arbitrary-angle rotations.",
+      "validation_status": "LIMITED_SCOPE",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "P2",
+        "title": "Magic state distillation",
+        "source_paragraphs": "110–112",
+        "claim_status": "REFUTED",
+        "scope": "Leading 35p^3 is model dependent; solving p=35p^3 gives 16.9%, not 14.1%. Exact 15-to-1 phase-error model gives approximately 14.148%. Source state is an H-type convention, not the usual T|+> state.",
+        "execution": "PASS",
+        "evidence": {
+          "cubic_fixed_point": 0.1690308509457033,
+          "exact_model_fixed_point": 0.14148029265616724,
+          "accepted_by_error_weight": [
+            1,
+            0,
+            0,
+            35,
+            105,
+            168,
+            280,
+            435,
+            435,
+            280,
+            168,
+            105,
+            35,
+            0,
+            0,
+            1
+          ],
+          "logical_failures_by_weight": [
+            0,
+            0,
+            0,
+            35,
+            0,
+            168,
+            0,
+            435,
+            0,
+            280,
+            0,
+            105,
+            0,
+            0,
+            0,
+            1
+          ],
+          "assumptions": "Independent identically distributed twirled phase errors, ideal Clifford circuit, postselection."
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "See finite evidence and explicitly limited scope below."
+    },
+    {
+      "id": "original/L4",
+      "heading": "Lemma 4 Correct Cartan diagonal and Pauli expansion",
+      "revision": 2,
+      "statement": "Order the 240 roots lexicographically, followed by eight zero Cartan weights and eight padding entries. Let h_j^(a) be the a-th root coordinate divided by sqrt(60), with zero entries for the last sixteen states. Define H_a = sum_j h_j^(a)|j><j|. Then Tr(H_a H_b)=delta_ab. For n=8, H_a = sum_s c_s^(a) Z^s, where c_s^(a)=2^(-8) sum_j h_j^(a)(-1)^popcount(s AND j).",
+      "justification": "The exact root coordinate Gram matrix is 60I, giving the trace normalization. Each projector is the tensor product of (I+(-1)^b Z)/2; the previously stated expression instead selected I or Z and was not a projector. The binary characters obey sum_j chi_s(j)chi_t(j)=256 delta_st, proving the Walsh coefficient formula and reconstruction. The scripts verify the Gram matrix and a representative reconstructed Cartan generator. This ordering is an explicit convention, not an inferred hardware layout.",
+      "validation_status": "FINITE_CHECKS_PASS",
+      "scope": "Computational evidence is not a general proof. The written hypotheses and justification control the claim.",
+      "original_version_regression": {
+        "id": "L4",
+        "title": "Cartan Pauli Z expansion",
+        "source_paragraphs": "114–116",
+        "claim_status": "REFUTED",
+        "scope": "Xi in the displayed formula is I or Z, not a basis projector. E8 root coordinate trace metric is 60*I, so normalization is 1/sqrt(60), not 1/sqrt(248).",
+        "execution": "PASS",
+        "evidence": {
+          "root_coordinate_gram_diagonal": [
+            60.0,
+            60.0,
+            60.0,
+            60.0,
+            60.0,
+            60.0,
+            60.0,
+            60.0
+          ],
+          "source_normalized_squared_norm": 0.24193548387096775,
+          "correct_projector": "|j><j| = tensor_k (I + (-1)^bit_k Z)/2",
+          "correct_Pauli_coefficient": "c_s = (1/256) sum_j h_j (-1)^popcount(s & j)",
+          "reconstruction_max_error": 5.5077470362263625e-17
+        }
+      },
+      "execution": "PASS",
+      "corrected_evidence": "All eight corrected Cartan matrices reconstructed and trace-orthonormality checked."
+    },
+    {
+      "id": "update/F1",
+      "title": "Supporting result 1 E8 algebraic data and reducibility",
+      "source_paragraphs": "54–56; references to original Theorem 1 and Lemma 2",
+      "original_verdict": "PARTLY_CORRECT",
+      "scope": "Complete reducibility is an invoked general theorem, not a conclusion of a finite Python test. No universal exponential classical lower bound is established.",
+      "execution": "PASS",
+      "evidence": {
+        "roots": 240,
+        "integer": 112,
+        "half_integer": 128,
+        "reflection_pairs": 57600,
+        "weyl_order": 696729600,
+        "general_proof_scope": "Weyl complete reducibility is invoked, not proved by this enumeration."
+      }
+    },
+    {
+      "id": "update/F2",
+      "title": "Supporting result 2 Encoding and excitation sectors",
+      "source_paragraphs": "51; 58; references to Definition 1 and Definition 3",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The 248-dimensional representation is adjoint. It is not the dimension of every fundamental E8 representation. A physical-subspace invariant ansatz must be independently established.",
+      "execution": "PASS",
+      "evidence": {
+        "tensor_square_dimension": 61504,
+        "minimum_qubits": 16,
+        "sector_sizes": [
+          1,
+          8,
+          28,
+          56,
+          70,
+          56,
+          28,
+          8,
+          1
+        ],
+        "leakage_transition": [
+          247,
+          251
+        ],
+        "basis_encoding_isometry": "Any selected distinct computational basis columns are orthonormal."
+      }
+    },
+    {
+      "id": "update/F3",
+      "title": "Supporting result 3 Casimir normalization and multiplicities",
+      "source_paragraphs": "55–57; references to Theorem 4 and Definitions 4 and 5",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The single-adjoint Casimir is scalar and has no nontrivial irrep decomposition to discover. Full decomposition requires more information than one Casimir spectrum; no polynomial-time VQE guarantee follows.",
+      "execution": "PASS",
+      "evidence": {
+        "root_casimir": 60.0,
+        "half_casimir": 30.0,
+        "single_irrep_multiplicity": 1,
+        "projector_trace": 248,
+        "trace_normalized_adjoint_casimir": 1.0
+      }
+    },
+    {
+      "id": "update/F4",
+      "title": "Supporting result 4 Deflation and padding hypotheses",
+      "source_paragraphs": "20; references to Theorem 3 and Corollary 2",
+      "original_verdict": "MISSING_HYPOTHESES",
+      "scope": "These are global spectral statements, not VQE convergence guarantees. One vector does not exhaust a degenerate eigenspace. Approximate eigenvectors and restricted ansatz spaces need separate bounds.",
+      "execution": "PASS",
+      "evidence": {
+        "coupled_block_leakage": 0.03576165455737034,
+        "deflation": "Another vector in same degenerate eigenspace remains available."
+      }
+    },
+    {
+      "id": "update/F5",
+      "title": "Supporting result 5 Correct Givens gates and smoothness",
+      "source_paragraphs": "18–21; 49–51; 58–59; references to Theorems 5 6 8 and 9",
+      "original_verdict": "MISSING_HYPOTHESES",
+      "scope": "The original two-CNOT synthesis is not used. The smoothness bound requires the specified parameterization, and does not prove global or exponential optimization convergence.",
+      "execution": "PASS",
+      "evidence": {
+        "Givens_parameter_pairs": 12,
+        "two_parameter_Hessian_norm": 800.0000000000001,
+        "trace_derivative": "-1j",
+        "conditional_two_CNOT_counts_per_D": [
+          14,
+          4
+        ]
+      }
+    },
+    {
+      "id": "update/F6",
+      "title": "Supporting result 6 Surface code checks and resource assumptions",
+      "source_paragraphs": "9–11; 39–41; 59; references to Proposition 1 and Definition 6",
+      "original_verdict": "CONDITIONAL",
+      "scope": "The budget does not establish routing, gate synthesis, distillation or circuit-level fault tolerance. Spatial separation, code distance and decoding-window length are distinct variables. A physical-qubit count alone supplies no noise threshold.",
+      "execution": "PASS",
+      "evidence": {
+        "X_supports": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2,
+            4,
+            5
+          ],
+          [
+            3,
+            4,
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "Z_supports": [
+          [
+            0,
+            1,
+            3,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            5,
+            7,
+            8
+          ]
+        ],
+        "ranks": [
+          4,
+          4
+        ],
+        "distance": [
+          3,
+          3
+        ],
+        "physical_budget": 144,
+        "syndrome_ancillas": 64
+      }
+    },
+    {
+      "id": "update/F7",
+      "title": "Supporting result 7 Exact ideal distillation model",
+      "source_paragraphs": "29–31; reference to Proposition 2",
+      "original_verdict": "LEADING_TERM_MISUSED",
+      "scope": "Perfect Clifford operations, independent twirled phase errors and postselection are assumptions. This model does not certify a physical distillation factory or arbitrary input noise.",
+      "execution": "PASS",
+      "evidence": {
+        "patterns": 32768,
+        "accepted_by_weight": [
+          1,
+          0,
+          0,
+          35,
+          105,
+          168,
+          280,
+          435,
+          435,
+          280,
+          168,
+          105,
+          35,
+          0,
+          0,
+          1
+        ],
+        "failure_by_weight": [
+          0,
+          0,
+          0,
+          35,
+          0,
+          168,
+          0,
+          435,
+          0,
+          280,
+          0,
+          105,
+          0,
+          0,
+          0,
+          1
+        ],
+        "series_through_p5": [
+          "0",
+          "0",
+          "0",
+          "35",
+          "105",
+          "378"
+        ],
+        "fixed_point_bracket": [
+          0.1414802926561672,
+          0.14148029265616724
+        ],
+        "p001_exact_output": 3.608768396532329e-05,
+        "cubic_truncation": 3.5e-05
+      }
+    },
+    {
+      "id": "update/F8",
+      "title": "Supporting result 8 Cartan normalization and diagonal coordinates",
+      "source_paragraphs": "34–36; references to Lemma 4",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "A Cartan subalgebra is maximal toral within the Lie algebra, not the center of all represented matrices. The Lie-algebra center of simple E8 is zero.",
+      "execution": "PASS",
+      "evidence": {
+        "Cartan_rank": 8,
+        "zero_weight_multiplicity": 8,
+        "unscaled_Gram_diagonal": [
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60
+        ]
+      }
+    },
+    {
+      "id": "update/T13",
+      "title": "Theorem 13 Separate level matching and WZW central charge",
+      "source_paragraphs": "2–5",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The Sugawara/current-algebra construction is an invoked framework, not a derivation of a physical E8 interface from root coordinates or qubits. An interface spectrum, boundary conditions, invariant form and orientation must be supplied; root-space intersections alone do not define a level jump.",
+      "execution": "PASS",
+      "evidence": {
+        "central_charges": {
+          "1": "8",
+          "2": "31/2",
+          "3": "248/11",
+          "10": "62"
+        },
+        "original_level_one_lhs": 30,
+        "original_level_one_rhs": 248,
+        "original_equation_would_require_delta_k": "124/15",
+        "not_computed": "No field theory or physical boundary is simulated."
+      }
+    },
+    {
+      "id": "update/L6",
+      "title": "Lemma 6 Decoder graph size and conditional complexity",
+      "source_paragraphs": "8–11",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "A finite graph size does not certify latency below a coherence time. Weight bit lengths, precision, graph construction, implementation and processor measurements are needed. A decoding window may contain many rounds.",
+      "execution": "PASS",
+      "evidence": {
+        "real_vertex_bounds": {
+          "1": 64,
+          "2": 128,
+          "10": 640
+        },
+        "complete_graph_edges_V72": 2556,
+        "matching_oracle_cost": 6,
+        "optional_solver": "NOT_RUN: NetworkX not installed; exhaustive oracle completed.",
+        "limitation": "Neither the exhaustive oracle nor timings prove O(V^3) or latency."
+      }
+    },
+    {
+      "id": "update/T10",
+      "title": "Theorem 10 Flat holonomy need not be scalar",
+      "source_paragraphs": "13–15",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "No connection or adiabatic Hamiltonian is supplied for the hardware. Neither a scalar phase nor absolute immunity to control noise is established.",
+      "execution": "PASS",
+      "evidence": {
+        "holonomy": [
+          "(0.7071067811865476+0.7071067811865475j)",
+          "(0.7071067811865476-0.7071067811865475j)"
+        ],
+        "scalar": false,
+        "curvature": "d(dphi)=0 and dphi wedge dphi=0 on annulus"
+      }
+    },
+    {
+      "id": "update/T14",
+      "title": "Theorem 14 Conditional gradient concentration without convergence",
+      "source_paragraphs": "18–21",
+      "original_verdict": "UNSUPPORTED_AS_WRITTEN",
+      "scope": "Concentration does not imply exponential descent or a global minimum. For E(θ)=cos θ, initialization at θ=0 has zero gradient at a maximum. The cited barren-plateau work concerns small gradients under specific randomness assumptions and is not a convergence guarantee.",
+      "execution": "PASS",
+      "evidence": {
+        "torus_grid_points": 64,
+        "pairwise_Lipschitz_checks": 4096,
+        "product_Bernoulli_variables": 16,
+        "stationary_maximum": "E=cos(theta), theta=0",
+        "not_proved": "Continuum concentration is justified in the written martingale argument; examples are not its proof."
+      }
+    },
+    {
+      "id": "update/T15",
+      "title": "Proposition 15 Conditional thermal response and distinct anomalies",
+      "source_paragraphs": "23–26",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "This is conditional edge physics. No E8 edge, electromagnetic coupling, thermal equilibration or Hall experiment has been constructed on the proposed register. Orientation reverses the sign of c_minus.",
+      "execution": "PASS",
+      "evidence": {
+        "zeta2_partial_sum": 1.6449240668982266,
+        "integral_tail_bounds": [
+          9.99990000099999e-06,
+          1e-05
+        ],
+        "conditional_kappa_over_T_c8_W_per_K2": 7.571449213109313e-12,
+        "charge_current": "No electromagnetic coupling is specified; electrical Hall conductivity is not computed."
+      }
+    },
+    {
+      "id": "update/T16",
+      "title": "Theorem 16 Certified cubic distillation bound and resource growth",
+      "source_paragraphs": "28–31",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The coefficient 35 is only leading order and cannot replace A in a rigorous upper bound. Parallel depth may scale with levels only under explicit factory, scheduling and code-distance assumptions. Noise in Clifford operations can create a nonzero error floor.",
+      "execution": "PASS",
+      "evidence": {
+        "certified_A_exact": "35016804350280010500000001000000/860058354641288524893953951499",
+        "certified_A": 40.714451712854704,
+        "p_star": 0.01,
+        "steps": [
+          {
+            "level": 1,
+            "error": 3.608768396532329e-05,
+            "log_upper_bound": -10.108927449601413,
+            "expected_raw_inputs": 17.440028579309455
+          },
+          {
+            "level": 2,
+            "error": 1.64509922735908e-12,
+            "log_upper_bound": -26.620199240441384,
+            "expected_raw_inputs": 261.7420778840348
+          },
+          {
+            "level": 3,
+            "error": 1.5582758480647271e-34,
+            "log_upper_bound": -76.15401461296128,
+            "expected_raw_inputs": 3926.1311683574054
+          }
+        ],
+        "levels_sufficient_for_1e12": 3,
+        "no_rejection_raw_inputs": 3375
+      }
+    },
+    {
+      "id": "update/T17",
+      "title": "Theorem 17 Complete diagonal Pauli basis",
+      "source_paragraphs": "33–36",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The Lie-algebra center of E8 is zero. Maximal toral inside E8 does not mean maximal diagonal inside End(C^248). Diagonal Pauli completeness does not solve tensor-product multiplicities.",
+      "execution": "PASS",
+      "evidence": {
+        "diagonal_dimension": 256,
+        "Cartan_plus_padding_rank": 9,
+        "physical_identity_trace": 248,
+        "Cartan_physical_trace": 0,
+        "reconstruction_max_error": 0.0
+      }
+    },
+    {
+      "id": "update/T18",
+      "title": "Theorem 18 Exponential path bound under explicit noise assumptions",
+      "source_paragraphs": "38–41",
+      "original_verdict": "UNSUPPORTED_AS_WRITTEN",
+      "scope": "The conditional path event need not equal all logical faults. Code distance three is not a declaration of separation three, a noise correlation length, or zero correlated logical error. Gap size alone does not specify a hardware cross-talk channel.",
+      "execution": "PASS",
+      "evidence": {
+        "path_event_bounds": [
+          [
+            3,
+            0.00794117647058824
+          ],
+          [
+            10,
+            1.3568244485294138e-08
+          ],
+          [
+            100,
+            9.566145353769913e-83
+          ]
+        ],
+        "correlated_logical_channel_probability": 0.01,
+        "counterexample": "A shared logical flip with probability q independent of separation violates a universal decaying envelope."
+      }
+    },
+    {
+      "id": "update/T19",
+      "title": "Theorem 19 Scalar phases and level one integrability",
+      "source_paragraphs": "43–46",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The level-one bulk has no nontrivial anyon sector in this standard theory. Ordinary surface-code e and m excitations are Abelian; engineered defects would require a separately specified model. No mapping from an E8 weight basis to anyonic fusion spaces is provided.",
+      "execution": "PASS",
+      "evidence": {
+        "level_one_integrable_weights": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "adjoint_minimum_level": 2,
+        "adjoint_weight_at_k2": "15/16",
+        "original_k1_primary": "absent",
+        "scalar_phase_commutator_norm": 1.9229626863835638e-16
+      }
+    },
+    {
+      "id": "update/T20",
+      "title": "Theorem 20 Conditional simulation and sampling costs",
+      "source_paragraphs": "48–53; 56–60",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The first-248 encoding is not a Hamming sector. Arbitrary non-Clifford noisy physical-state simulation is not covered by a logical-register cost estimate or stabilizer tracking alone. Hamiltonian construction, optimization iterations, finite precision, output enumeration and measurement decomposition add costs. No efficient full tensor decomposition or 144-qubit simulation is proved.",
+      "execution": "PASS",
+      "evidence": {
+        "sample_count": 24,
+        "exact_binomial_tail": "190051/8388608",
+        "Hoeffding_bound": 0.09957413673572789,
+        "dense_example_energy": 0.5000000000000001,
+        "memory_amplitudes_144_qubits": 22300745198530623141535718272648361505980416,
+        "sector_dimension_8qubits_weight4": 70,
+        "cost_model": "S*(G*N+C_H(N)+R*C_dec(V))"
+      }
+    }
+  ],
+  "diagnostic_count": 50,
+  "execution": "PASS"
+}

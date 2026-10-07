@@ -1,0 +1,35 @@
+{
+  "intro": [
+    "The structural classification and decomposition of tensor products within exceptional Lie algebras connect representation theory, mathematical physics and quantum information. The E8 root system has 240 roots spanning an eight-dimensional Euclidean space, and its adjoint representation has dimension 248. For finite-dimensional complex irreducible modules V(λ) and V(μ), Weyl complete reducibility gives a direct sum of irreducibles with uniquely determined isomorphism classes and multiplicities, although the embedded summands need not be canonical.",
+    "Evaluating these multiplicities can require substantial classical computation for large modules. The E8 Weyl group has order 696729600. This large but fixed constant does not itself prove an exponential lower bound for classical algorithms as highest weights grow. Complexity comparisons must identify an algorithm, input encoding, varying parameters and required output.",
+    "This manuscript studies a spectral framework in which the tensor-product Casimir is assembled from coproduct generators and represented on a quantum register. A variational eigensolver may provide spectral information, but the spectrum of one Casimir does not generally identify all irreducible labels or multiplicities. A spectral projector trace counts a dimension-weighted sum of multiplicities. Neither polynomial-time full decomposition nor global VQE convergence is established here.",
+    "A single 248-dimensional adjoint module admits an eight-qubit amplitude encoding. The adjoint tensor square has dimension 61504 and requires at least sixteen qubits in the same direct encoding. Excitation-conserving Givens blocks preserve Hamming-weight sectors, which are not identical to the first-248-state physical subspace. The ansatz and initialization therefore require explicit invariant-subspace checks and cannot rely on weight conservation alone to prevent padding leakage.",
+    "The fault-tolerant discussion uses a conditional distance-three rotated surface-code resource model: eight patches with nine data qubits and eight syndrome ancillas each require 136 qubits before an assumed eight additional ancillas. This 144-qubit budget is not a complete implementation proof. Generator-dependent smoothness bounds, ideal distillation models and decoding graph estimates are stated with their hypotheses; real-time latency, gate synthesis, routing and circuit-level noise thresholds require further specification.",
+    "The boundary-field-theory discussion separates Chern–Simons gauge-level matching from gravitational and thermal-response data. Flat holonomy need not be scalar, and scalar phases do not establish non-Abelian statistics. Conventional E8 level-one theory has only the vacuum integrable sector. These mathematical observations do not construct a protected E8 interface on the proposed hardware. The combined paper therefore provides a conditional framework and reproducible checks for exploring the spectral approach, rather than a demonstrated speedup or an experimentally certified processor."
+  ],
+  "bibliography": [
+    "R1. Witten, E. (1989). Quantum field theory and the Jones polynomial. Communications in Mathematical Physics 121, 351–399. https://www.maths.ed.ac.uk/~v1ranick/papers/witten.pdf",
+    "R2. Distler, J., and Sharpe, E. (2010). Heterotic compactifications with principal bundles for general groups and general levels. Advances in Theoretical and Mathematical Physics 14, 335–398. https://arxiv.org/abs/hep-th/0701244",
+    "R3. NetworkX documentation. max_weight_matching. Implementation-specific complexity and numerical-precision notes. Accessed 7 October 2026. https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.matching.max_weight_matching.html",
+    "R4. McClean, J. R., et al. (2018). Barren plateaus in quantum neural network training landscapes. Nature Communications 9, 4812. This reference explains why concentration is not an optimization guarantee; the replacement bounded-differences proof is given in the text. https://arxiv.org/abs/1803.11173",
+    "R5. Kane, C. L., and Fisher, M. P. A. (1997). Quantized thermal transport in the fractional quantum Hall effect. Physical Review B 55, 15832. https://arxiv.org/abs/cond-mat/9603118",
+    "R6. Hastings, M. B., and Koma, T. (2006). Spectral gap and exponential decay of correlations. Communications in Mathematical Physics 265, 781–804. https://arxiv.org/abs/math-ph/0507008",
+    "B1. Feynman, R. P. (1948). Space-time approach to non-relativistic quantum mechanics. Reviews of Modern Physics, 20(2), 367.",
+    "B2. Peraro, M., & Tancredi, L. (2019). Highly efficient integration methods for Feynman integrals and multi-loop scattering amplitudes. Journal of High Energy Physics, 2019(7), 1-45.",
+    "B3. Moore, G., & Seiberg, N. (1989). Classical and quantum conformal field theory. Communications in Mathematical Physics, 123(2), 177–254.",
+    "B4. Bravyi, S., & Kitaev, A. (1998). Quantum codes on a lattice with boundary. arXiv:quant-ph/9811052.",
+    "B5. Humphreys, J. E. (2012). Introduction to Lie algebras and representation theory (Vol. 9). Springer Science & Business Media.",
+    "B6. Fowler, A. G., Mariantoni, M., Martinis, J. M., & Cleland, A. N. (2012). Surface codes: Towards practical large-scale fault-tolerant quantum computation. Physical Review A, 86(3), 032324.",
+    "B7. Peruzzo, A., McClean, J., Shadbolt, P., Zhou, X. Q., Jones, P. J., Vlasenko, A., ... & O'Brien, J. L. (2014). A variational eigenvalue solver on a photonic quantum processor. Nature Communications, 5(1), 4213.",
+    "B8. Bravyi, S., & Kitaev, A. (2005). Universal quantum computation with ideal Clifford gates and noisy magic states. Physical Review A, 71(2), 022316.",
+    "B9. Edmonds, J. (1965). Paths, trees, and flowers. Canadian Journal of Mathematics, 17, 449–467.",
+    "B10. Wecker, D., Hastings, M. B., & Troyer, M. (2015). Progress towards practical quantum simulation of physical systems. Physical Review A, 92(2), 022305.",
+    "B11. Conway, J. H., & Sloane, N. J. A. (2013). Sphere packings, lattices and groups (Vol. 290). Springer Science & Business Media.",
+    "B12. Jordan, P., & Wigner, E. (1928). Über das Paulische Äquivalenzverbot. Zeitschrift für Physik, 47(9-10), 631–651.",
+    "B13. Nayak, C., Simon, S. H., Stern, A., Freedman, M., & Das Sarma, S. (2008). Non-Abelian anyons and topological quantum computation. Reviews of Modern Physics, 80(3), 1083."
+  ],
+  "expected_suite_checks": {
+    "original": 32,
+    "update": 18
+  }
+}

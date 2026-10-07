@@ -1,0 +1,450 @@
+{
+  "meaning": "PASS means the diagnostic ran successfully. Finite checks are not formal proofs. Original verdicts refer to the uploaded draft, not the corrected statements.",
+  "results": [
+    {
+      "id": "F1",
+      "title": "Supporting result 1 E8 algebraic data and reducibility",
+      "source_paragraphs": "54–56; references to original Theorem 1 and Lemma 2",
+      "original_verdict": "PARTLY_CORRECT",
+      "scope": "Complete reducibility is an invoked general theorem, not a conclusion of a finite Python test. No universal exponential classical lower bound is established.",
+      "execution": "PASS",
+      "evidence": {
+        "roots": 240,
+        "integer": 112,
+        "half_integer": 128,
+        "reflection_pairs": 57600,
+        "weyl_order": 696729600,
+        "general_proof_scope": "Weyl complete reducibility is invoked, not proved by this enumeration."
+      }
+    },
+    {
+      "id": "F2",
+      "title": "Supporting result 2 Encoding and excitation sectors",
+      "source_paragraphs": "51; 58; references to Definition 1 and Definition 3",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The 248-dimensional representation is adjoint. It is not the dimension of every fundamental E8 representation. A physical-subspace invariant ansatz must be independently established.",
+      "execution": "PASS",
+      "evidence": {
+        "tensor_square_dimension": 61504,
+        "minimum_qubits": 16,
+        "sector_sizes": [
+          1,
+          8,
+          28,
+          56,
+          70,
+          56,
+          28,
+          8,
+          1
+        ],
+        "leakage_transition": [
+          247,
+          251
+        ],
+        "basis_encoding_isometry": "Any selected distinct computational basis columns are orthonormal."
+      }
+    },
+    {
+      "id": "F3",
+      "title": "Supporting result 3 Casimir normalization and multiplicities",
+      "source_paragraphs": "55–57; references to Theorem 4 and Definitions 4 and 5",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The single-adjoint Casimir is scalar and has no nontrivial irrep decomposition to discover. Full decomposition requires more information than one Casimir spectrum; no polynomial-time VQE guarantee follows.",
+      "execution": "PASS",
+      "evidence": {
+        "root_casimir": 60.0,
+        "half_casimir": 30.0,
+        "single_irrep_multiplicity": 1,
+        "projector_trace": 248,
+        "trace_normalized_adjoint_casimir": 1.0
+      }
+    },
+    {
+      "id": "F4",
+      "title": "Supporting result 4 Deflation and padding hypotheses",
+      "source_paragraphs": "20; references to Theorem 3 and Corollary 2",
+      "original_verdict": "MISSING_HYPOTHESES",
+      "scope": "These are global spectral statements, not VQE convergence guarantees. One vector does not exhaust a degenerate eigenspace. Approximate eigenvectors and restricted ansatz spaces need separate bounds.",
+      "execution": "PASS",
+      "evidence": {
+        "coupled_block_leakage": 0.03576165455737034,
+        "deflation": "Another vector in same degenerate eigenspace remains available."
+      }
+    },
+    {
+      "id": "F5",
+      "title": "Supporting result 5 Correct Givens gates and smoothness",
+      "source_paragraphs": "18–21; 49–51; 58–59; references to Theorems 5 6 8 and 9",
+      "original_verdict": "MISSING_HYPOTHESES",
+      "scope": "The original two-CNOT synthesis is not used. The smoothness bound requires the specified parameterization, and does not prove global or exponential optimization convergence.",
+      "execution": "PASS",
+      "evidence": {
+        "Givens_parameter_pairs": 12,
+        "two_parameter_Hessian_norm": 800.0000000000001,
+        "trace_derivative": "-1j",
+        "conditional_two_CNOT_counts_per_D": [
+          14,
+          4
+        ]
+      }
+    },
+    {
+      "id": "F6",
+      "title": "Supporting result 6 Surface code checks and resource assumptions",
+      "source_paragraphs": "9–11; 39–41; 59; references to Proposition 1 and Definition 6",
+      "original_verdict": "CONDITIONAL",
+      "scope": "The budget does not establish routing, gate synthesis, distillation or circuit-level fault tolerance. Spatial separation, code distance and decoding-window length are distinct variables. A physical-qubit count alone supplies no noise threshold.",
+      "execution": "PASS",
+      "evidence": {
+        "X_supports": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2,
+            4,
+            5
+          ],
+          [
+            3,
+            4,
+            6,
+            7
+          ],
+          [
+            7,
+            8
+          ]
+        ],
+        "Z_supports": [
+          [
+            0,
+            1,
+            3,
+            4
+          ],
+          [
+            2,
+            5
+          ],
+          [
+            3,
+            6
+          ],
+          [
+            4,
+            5,
+            7,
+            8
+          ]
+        ],
+        "ranks": [
+          4,
+          4
+        ],
+        "distance": [
+          3,
+          3
+        ],
+        "physical_budget": 144,
+        "syndrome_ancillas": 64
+      }
+    },
+    {
+      "id": "F7",
+      "title": "Supporting result 7 Exact ideal distillation model",
+      "source_paragraphs": "29–31; reference to Proposition 2",
+      "original_verdict": "LEADING_TERM_MISUSED",
+      "scope": "Perfect Clifford operations, independent twirled phase errors and postselection are assumptions. This model does not certify a physical distillation factory or arbitrary input noise.",
+      "execution": "PASS",
+      "evidence": {
+        "patterns": 32768,
+        "accepted_by_weight": [
+          1,
+          0,
+          0,
+          35,
+          105,
+          168,
+          280,
+          435,
+          435,
+          280,
+          168,
+          105,
+          35,
+          0,
+          0,
+          1
+        ],
+        "failure_by_weight": [
+          0,
+          0,
+          0,
+          35,
+          0,
+          168,
+          0,
+          435,
+          0,
+          280,
+          0,
+          105,
+          0,
+          0,
+          0,
+          1
+        ],
+        "series_through_p5": [
+          "0",
+          "0",
+          "0",
+          "35",
+          "105",
+          "378"
+        ],
+        "fixed_point_bracket": [
+          0.1414802926561672,
+          0.14148029265616724
+        ],
+        "p001_exact_output": 3.608768396532329e-05,
+        "cubic_truncation": 3.5e-05
+      }
+    },
+    {
+      "id": "F8",
+      "title": "Supporting result 8 Cartan normalization and diagonal coordinates",
+      "source_paragraphs": "34–36; references to Lemma 4",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "A Cartan subalgebra is maximal toral within the Lie algebra, not the center of all represented matrices. The Lie-algebra center of simple E8 is zero.",
+      "execution": "PASS",
+      "evidence": {
+        "Cartan_rank": 8,
+        "zero_weight_multiplicity": 8,
+        "unscaled_Gram_diagonal": [
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60,
+          60
+        ]
+      }
+    },
+    {
+      "id": "T13",
+      "title": "Theorem 13 Separate level matching and WZW central charge",
+      "source_paragraphs": "2–5",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The Sugawara/current-algebra construction is an invoked framework, not a derivation of a physical E8 interface from root coordinates or qubits. An interface spectrum, boundary conditions, invariant form and orientation must be supplied; root-space intersections alone do not define a level jump.",
+      "execution": "PASS",
+      "evidence": {
+        "central_charges": {
+          "1": "8",
+          "2": "31/2",
+          "3": "248/11",
+          "10": "62"
+        },
+        "original_level_one_lhs": 30,
+        "original_level_one_rhs": 248,
+        "original_equation_would_require_delta_k": "124/15",
+        "not_computed": "No field theory or physical boundary is simulated."
+      }
+    },
+    {
+      "id": "L6",
+      "title": "Lemma 6 Decoder graph size and conditional complexity",
+      "source_paragraphs": "8–11",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "A finite graph size does not certify latency below a coherence time. Weight bit lengths, precision, graph construction, implementation and processor measurements are needed. A decoding window may contain many rounds.",
+      "execution": "PASS",
+      "evidence": {
+        "real_vertex_bounds": {
+          "1": 64,
+          "2": 128,
+          "10": 640
+        },
+        "complete_graph_edges_V72": 2556,
+        "matching_oracle_cost": 6,
+        "optional_solver": "NOT_RUN: NetworkX not installed; exhaustive oracle completed.",
+        "limitation": "Neither the exhaustive oracle nor timings prove O(V^3) or latency."
+      }
+    },
+    {
+      "id": "T10",
+      "title": "Theorem 10 Flat holonomy need not be scalar",
+      "source_paragraphs": "13–15",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "No connection or adiabatic Hamiltonian is supplied for the hardware. Neither a scalar phase nor absolute immunity to control noise is established.",
+      "execution": "PASS",
+      "evidence": {
+        "holonomy": [
+          "(0.7071067811865476+0.7071067811865475j)",
+          "(0.7071067811865476-0.7071067811865475j)"
+        ],
+        "scalar": false,
+        "curvature": "d(dphi)=0 and dphi wedge dphi=0 on annulus"
+      }
+    },
+    {
+      "id": "T14",
+      "title": "Theorem 14 Conditional gradient concentration without convergence",
+      "source_paragraphs": "18–21",
+      "original_verdict": "UNSUPPORTED_AS_WRITTEN",
+      "scope": "Concentration does not imply exponential descent or a global minimum. For E(θ)=cos θ, initialization at θ=0 has zero gradient at a maximum. The cited barren-plateau work concerns small gradients under specific randomness assumptions and is not a convergence guarantee.",
+      "execution": "PASS",
+      "evidence": {
+        "torus_grid_points": 64,
+        "pairwise_Lipschitz_checks": 4096,
+        "product_Bernoulli_variables": 16,
+        "stationary_maximum": "E=cos(theta), theta=0",
+        "not_proved": "Continuum concentration is justified in the written martingale argument; examples are not its proof."
+      }
+    },
+    {
+      "id": "T15",
+      "title": "Proposition 15 Conditional thermal response and distinct anomalies",
+      "source_paragraphs": "23–26",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "This is conditional edge physics. No E8 edge, electromagnetic coupling, thermal equilibration or Hall experiment has been constructed on the proposed register. Orientation reverses the sign of c_minus.",
+      "execution": "PASS",
+      "evidence": {
+        "zeta2_partial_sum": 1.6449240668982266,
+        "integral_tail_bounds": [
+          9.99990000099999e-06,
+          1e-05
+        ],
+        "conditional_kappa_over_T_c8_W_per_K2": 7.571449213109313e-12,
+        "charge_current": "No electromagnetic coupling is specified; electrical Hall conductivity is not computed."
+      }
+    },
+    {
+      "id": "T16",
+      "title": "Theorem 16 Certified cubic distillation bound and resource growth",
+      "source_paragraphs": "28–31",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The coefficient 35 is only leading order and cannot replace A in a rigorous upper bound. Parallel depth may scale with levels only under explicit factory, scheduling and code-distance assumptions. Noise in Clifford operations can create a nonzero error floor.",
+      "execution": "PASS",
+      "evidence": {
+        "certified_A_exact": "35016804350280010500000001000000/860058354641288524893953951499",
+        "certified_A": 40.714451712854704,
+        "p_star": 0.01,
+        "steps": [
+          {
+            "level": 1,
+            "error": 3.608768396532329e-05,
+            "log_upper_bound": -10.108927449601413,
+            "expected_raw_inputs": 17.440028579309455
+          },
+          {
+            "level": 2,
+            "error": 1.64509922735908e-12,
+            "log_upper_bound": -26.620199240441384,
+            "expected_raw_inputs": 261.7420778840348
+          },
+          {
+            "level": 3,
+            "error": 1.5582758480647271e-34,
+            "log_upper_bound": -76.15401461296128,
+            "expected_raw_inputs": 3926.1311683574054
+          }
+        ],
+        "levels_sufficient_for_1e12": 3,
+        "no_rejection_raw_inputs": 3375
+      }
+    },
+    {
+      "id": "T17",
+      "title": "Theorem 17 Complete diagonal Pauli basis",
+      "source_paragraphs": "33–36",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The Lie-algebra center of E8 is zero. Maximal toral inside E8 does not mean maximal diagonal inside End(C^248). Diagonal Pauli completeness does not solve tensor-product multiplicities.",
+      "execution": "PASS",
+      "evidence": {
+        "diagonal_dimension": 256,
+        "Cartan_plus_padding_rank": 9,
+        "physical_identity_trace": 248,
+        "Cartan_physical_trace": 0,
+        "reconstruction_max_error": 0.0
+      }
+    },
+    {
+      "id": "T18",
+      "title": "Theorem 18 Exponential path bound under explicit noise assumptions",
+      "source_paragraphs": "38–41",
+      "original_verdict": "UNSUPPORTED_AS_WRITTEN",
+      "scope": "The conditional path event need not equal all logical faults. Code distance three is not a declaration of separation three, a noise correlation length, or zero correlated logical error. Gap size alone does not specify a hardware cross-talk channel.",
+      "execution": "PASS",
+      "evidence": {
+        "path_event_bounds": [
+          [
+            3,
+            0.00794117647058824
+          ],
+          [
+            10,
+            1.3568244485294138e-08
+          ],
+          [
+            100,
+            9.566145353769913e-83
+          ]
+        ],
+        "correlated_logical_channel_probability": 0.01,
+        "counterexample": "A shared logical flip with probability q independent of separation violates a universal decaying envelope."
+      }
+    },
+    {
+      "id": "T19",
+      "title": "Theorem 19 Scalar phases and level one integrability",
+      "source_paragraphs": "43–46",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The level-one bulk has no nontrivial anyon sector in this standard theory. Ordinary surface-code e and m excitations are Abelian; engineered defects would require a separately specified model. No mapping from an E8 weight basis to anyonic fusion spaces is provided.",
+      "execution": "PASS",
+      "evidence": {
+        "level_one_integrable_weights": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        ],
+        "adjoint_minimum_level": 2,
+        "adjoint_weight_at_k2": "15/16",
+        "original_k1_primary": "absent",
+        "scalar_phase_commutator_norm": 1.9229626863835638e-16
+      }
+    },
+    {
+      "id": "T20",
+      "title": "Theorem 20 Conditional simulation and sampling costs",
+      "source_paragraphs": "48–53; 56–60",
+      "original_verdict": "REFUTED_AS_WRITTEN",
+      "scope": "The first-248 encoding is not a Hamming sector. Arbitrary non-Clifford noisy physical-state simulation is not covered by a logical-register cost estimate or stabilizer tracking alone. Hamiltonian construction, optimization iterations, finite precision, output enumeration and measurement decomposition add costs. No efficient full tensor decomposition or 144-qubit simulation is proved.",
+      "execution": "PASS",
+      "evidence": {
+        "sample_count": 24,
+        "exact_binomial_tail": "190051/8388608",
+        "Hoeffding_bound": 0.09957413673572789,
+        "dense_example_energy": 0.5000000000000001,
+        "memory_amplitudes_144_qubits": 22300745198530623141535718272648361505980416,
+        "sector_dimension_8qubits_weight4": 70,
+        "cost_model": "S*(G*N+C_H(N)+R*C_dec(V))"
+      }
+    }
+  ],
+  "document_sync": {
+    "matched_claim_groups": 18,
+    "sha256": "87c85e69b6eec472f9d8ed3cd855d22a83973d460382efe340834e9084196d23"
+  }
+}
